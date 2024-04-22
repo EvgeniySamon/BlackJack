@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <windows.h>
+#include <set>
 #include <vector>
 #include "Card.h"
 #include "Func.h"
@@ -16,9 +17,18 @@ class BlackJeck {
     Player* player;
     Deck CardsDiler;
     vector<pair<Deck, Chips>> CardsPlayer;
-    size_t i = 0;
+    size_t i = 0;   
+    void PlayDealer();
+
+    void BJ_move(const string& dei);
+
+    void PlayBlackjack();
+
+    void DealerBlackJeck();
+
+    Chips Win();
 public:
-    BlackJeck(Player* pl) : player(pl) { cards.deck_52_Rand(8, 0.7); }
+    BlackJeck(Player* pl) : player(pl) { cards.deck_52_Rand(6, 0.7); }
 
     bool GetDealerMove() const;
 
@@ -32,14 +42,11 @@ public:
 
     Deck GetCardsDiler() const;
 
-    pair<size_t, bool> GetSumPoint(const Deck& d) const;
-
-    void PlayDealer();
-
-    bool can(const string& dei);
+    Player* GetPlayer() const;
 
     friend ostream& operator << (ostream& out, const BlackJeck& a);
 
-    void PlayBlackjack();
-
+    void Game();
 };
+
+void color(const unsigned short a);

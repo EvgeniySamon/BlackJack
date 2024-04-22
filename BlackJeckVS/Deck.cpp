@@ -55,6 +55,28 @@ Card Deck::GetCard(bool a) {
     return cards.at(i - 1);
 }
 
+size_t Deck::GetSumPoint() const{
+    vector<size_t> summ = {}; size_t i = 0, tuz = 0, Tecushtuz = 0;
+    do{
+        summ.push_back(0); Tecushtuz = tuz;
+        for (const auto& elem : cards){
+            if(elem.GetNominalBlackJack() != 11 || Tecushtuz == 0){
+                summ[i] += elem.GetNominalBlackJack();
+            }else{
+                ++summ[i];
+                --Tecushtuz;
+            }
+        }
+        ++i; ++tuz;
+    }while(summ[i-1] > 21 && tuz < cards.size()+1);
+    sort(summ.begin(), summ.end());
+    auto elem = lower_bound(begin(summ), end(summ), 22);
+    if(elem != summ.begin()){
+        --elem;
+    }  
+    return *elem;
+}
+
 ostream& operator << (ostream& out, const Deck& a) {
     for (const auto& elem : a.GetCards()) {
         out << elem << " ";

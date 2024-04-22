@@ -6,7 +6,7 @@ using namespace std;
 
 class Player {
     Chips chips;
-public:
+public: 
     string name;
     Player(const string& na, const Chips& ba = Chips()) : name(na), chips(ba) {}
 
@@ -17,4 +17,6 @@ public:
     void decline(const Chips& dec);
 
     pair<Chips, size_t> DoBet();
+
+    void BuyBalance();
 };

@@ -13,18 +13,24 @@ void Player::decline(const Chips& dec) {
 }
 
 pair<Chips, size_t> Player::DoBet() {
-    Chips bet;
+    Chips bet; 
     size_t kolvo;
     do {
         do {
-            cout << chips << "\nВ сколько рук вы желаете играть(макс. 6)?\n";
+            cout << chips << "\nВo сколько рук вы желаете играть(макс. 6): ";
             cin >> kolvo;
         } while (kolvo < 1 || kolvo > 6);
+        
         cin >> bet;
-        if (!chips.ChipsReserve(kolvo * bet)) {
-            cout << "Недостаточно средств\n";
+        if (!chips.ChipsReserve(kolvo * bet) || bet.GetBalance() == 0){
+            cout << "Недостаточно средств или ставка в 0\n";
         }
-    } while (!chips.ChipsReserve(kolvo * bet));
-    chips.decline(bet);
+    } while (!chips.ChipsReserve(kolvo * bet) || bet.GetBalance() == 0);
+    chips.decline(kolvo * bet);
     return { bet, kolvo };
+}
+
+void Player::BuyBalance() {
+    cout << "Сколько фишек вы желаете приобрести?\n";
+    cin >> chips;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-
+#include <windows.h>
 using namespace std;
 
 template<typename T>

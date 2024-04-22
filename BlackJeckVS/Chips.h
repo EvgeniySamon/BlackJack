@@ -34,4 +34,4 @@ public:
     bool ChipsReserve(const Chips& chips_other) const;
 };
 
-Chips operator*(long long other, const Chips& a);
+Chips operator*(size_t other, const Chips& a);

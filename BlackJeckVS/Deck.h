@@ -14,7 +14,7 @@ class Deck {
     size_t QuantityDecks = 1;
 
 public:
-    Deck(vector<Card> Card = {}) : cards(Card) {}
+    Deck(vector<Card> card = {}) : cards(card) {}
 
     void push_back(const Card& card);
 
@@ -31,6 +31,8 @@ public:
     void deck_52_Rand(size_t Quantity = 1, double per = 1.0);
 
     Card GetCard(bool a = 1);
+
+    size_t GetSumPoint() const;
 
 };
 
