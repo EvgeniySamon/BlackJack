@@ -6,14 +6,14 @@
 using namespace std;
 
 
-class Chips{
+class Chips {
     map<size_t, size_t> chips;
     size_t balance;
 
     void norm();
-    
+
 public:
-    Chips(const map<size_t, size_t>& EnChips = {}): chips(EnChips) {norm();}
+    Chips(const map<size_t, size_t>& EnChips = {}) : chips(EnChips) { norm(); }
 
     map<size_t, size_t> GetChips() const;
 

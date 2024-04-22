@@ -2,15 +2,15 @@
 #include <iostream>
 #include <windows.h>
 #include <vector>
-#include <Card.h>
-#include<Func.h>
-#include<Deck.h>
-#include<Chips.h>
-#include<Player.h>
+#include "Card.h"
+#include "Func.h"
+#include "Deck.h"
+#include "Chips.h"
+#include "Player.h"
 
 using namespace std;
 
-class BlackJeck{
+class BlackJeck {
     bool DealerMove = 0;
     Deck cards;
     Player* player;
@@ -18,7 +18,7 @@ class BlackJeck{
     vector<pair<Deck, Chips>> CardsPlayer;
     size_t i = 0;
 public:
-    BlackJeck(Player* pl): player(pl){cards.deck_52_Rand(8, 0.7);}
+    BlackJeck(Player* pl) : player(pl) { cards.deck_52_Rand(8, 0.7); }
 
     bool GetDealerMove() const;
 

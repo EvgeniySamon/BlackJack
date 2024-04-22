@@ -3,18 +3,18 @@
 #include <windows.h>
 #include <vector>
 #include <algorithm>
-#include <Card.h>
-#include<Func.h>
+#include "Card.h"
+#include "Func.h"
 using namespace std;
 
-class Deck{
+class Deck {
     vector<Card> cards;
     size_t i = 0, Mix = cards.size();
     double peremesh = 1.0;
     size_t QuantityDecks = 1;
-    
+
 public:
-    Deck(vector<Card> Card = {}): cards(Card){}
+    Deck(vector<Card> Card = {}) : cards(Card) {}
 
     void push_back(const Card& card);
 

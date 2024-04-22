@@ -1,15 +1,15 @@
 #pragma once
-#include<Chips.h>
-#include<string>
-#include<windows.h>
+#include "Chips.h"
+#include <string>
+#include <windows.h>
 using namespace std;
 
-class Player{  
+class Player {
     Chips chips;
 public:
     string name;
-    Player(const string& na, const Chips& ba = Chips()): name(na), chips(ba){}
-    
+    Player(const string& na, const Chips& ba = Chips()) : name(na), chips(ba) {}
+
     Chips GetChipsPlayer();
 
     void profit(const Chips& prof);
