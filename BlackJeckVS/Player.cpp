@@ -32,5 +32,7 @@ pair<Chips, size_t> Player::DoBet() {
 
 void Player::BuyBalance() {
     cout << "Сколько фишек вы желаете приобрести?\n";
-    cin >> chips;
+    Chips ship;
+    cin >> ship;
+    chips.profit(ship);
 }

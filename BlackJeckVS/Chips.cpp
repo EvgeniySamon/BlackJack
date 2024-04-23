@@ -15,7 +15,7 @@ size_t Chips::GetBalance() const {
     return balance;
 }
 
-size_t Chips::SummChips(const Chips& chips_other) {
+size_t Chips::SummChips(const Chips& chips_other){
     size_t sum = 0;
     for (const auto& para : chips_other.GetChips()) {
         sum += para.first * para.second;

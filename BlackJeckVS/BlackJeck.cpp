@@ -86,7 +86,7 @@ void BlackJeck::BJ_move(const string& dei) {
 ostream& operator << (ostream& out, const BlackJeck& a) {
     out << "Ваш баланс: " << a.GetPlayer()->GetChipsPlayer()
         << "\nКарт в колоде осталось: " << a.GetKolvoCards() << "    Карт в бите: " << a.GetKolvoCardsInBita()
-        << "    Карт до перемешивания колоды: " << a.GetKolvoCards() - 124 << "\n\n";
+        << "    Карт до перемешивания колоды: " << a.GetKolvoCards() - 93 << "\n\n";
     if (a.GetDealerMove()) {
         out << "Карты дилера:\n" << a.GetCardsDiler() << "  сумма очков: " << a.GetCardsDiler().GetSumPoint();
     }
@@ -106,7 +106,7 @@ ostream& operator << (ostream& out, const BlackJeck& a) {
                 out << "\tРука выиграна!!";
                 color(15);
             }else if(a.GetDealerMove() && elem.first.GetSumPoint() == a.GetCardsDiler().GetSumPoint()){
-                color(1);
+                color(11);
                 out << "\tНичья)";
                 color(15);
             }
@@ -141,42 +141,45 @@ Chips BlackJeck::Win(){
 
 void BlackJeck::PlayDealer() {
     cout << *this;
-    color(11);
+    color(3);
     cout << "Ход дилера...\n";
     color(15);
     system("pause");
     while(CardsDiler.GetSumPoint() < 17){
-        CardsDiler.push_back(cards.GetCard());
         system("Cls");
+        CardsDiler.push_back(cards.GetCard());
         cout << *this;
-        color(1);
+        color(3);
         cout << "Ход дилера...\n";
         color(15);
         system("pause");
     }
+    system("Cls");
     cout << *this;
-    color(1);
+    color(4);
     cout << "Окончательный результат!!!\n";
     color(15);
+    system("pause");
 }
 
 void BlackJeck::DealerBlackJeck(){
     for(auto& elem : CardsPlayer){
-        if(elem.first.GetSumPoint() < 21){
+        while(elem.first.GetSumPoint() < 21){
             elem.first.push_back(cards.GetCard());
+            system("Cls");
+            cout << *this;
+            color(3);
+            cout << "Вы добираете карты...\n";
+            color(15);
+            system("pause");
         }
-        system("Cls");
-        cout << *this;
-        color(1);
-        cout << "Вы добираете карты...\n";
-        color(15);
-        system("pause");
-        system("Cls");
     }
+    system("Cls");
     cout << *this;
-    color(1);
+    color(4);
     cout << "Окончательный результат!!!\n";
     color(15);
+    system("pause");
 }
 
 void BlackJeck::PlayBlackjack() {
@@ -192,6 +195,7 @@ void BlackJeck::PlayBlackjack() {
     if(CardsDiler.GetSumPoint() == 21){
         DealerMove = 1;
         DealerBlackJeck();
+        system("Cls");
         color(2);
         cout << "Ваш выигрыш:\n" << Win() << "\n";
         color(15);
@@ -218,9 +222,12 @@ void BlackJeck::Game(){
     do{
         system("Cls"); 
         PlayBlackjack();
-        cout << "выйти из стола?(1 - да/0 - нет): ";
+        cout << "выйти из стола?(2 - докупить фишек/ 1 - да/ 0 - нет): ";
         cin.ignore();
         getline(cin, vibor);
+        if(vibor[0] == '2'){
+            player->BuyBalance();
+        }
     }while(vibor != "1");
 }
 

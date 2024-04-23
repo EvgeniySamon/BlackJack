@@ -47,9 +47,9 @@ void Deck::deck_52_Rand(size_t Quantity, double per) {
 
 Card Deck::GetCard(bool a) {
     if (i == Mix && a) {
-        deck_52_Rand();
+        deck_52_Rand(QuantityDecks, 0.7);
         i = 0;
-        cout << "\nПеремешивание колоды!!!\n";
+        cout << "Перемешивание колоды!!!\n";
     }
     ++i;
     return cards.at(i - 1);
